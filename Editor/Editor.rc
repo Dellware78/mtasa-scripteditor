@@ -1,0 +1,5 @@
+//
+// RC File.
+//
+IDI_ICON1		ICON		DISCARDABLE	"Resources\Editor.ico"
+
