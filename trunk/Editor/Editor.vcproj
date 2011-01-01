@@ -38,10 +38,11 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				UseUnicodeResponseFiles="false"
 				AdditionalIncludeDirectories=".\GeneratedFiles;&quot;$(QTDIR)\include&quot;;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include\qtmain&quot;;&quot;$(QTDIR)\include\QtCore&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\QtXml&quot;;&quot;$(QTDIR)\include\QtXmlPatterns&quot;;.\"
 				PreprocessorDefinitions=",UNICODE,WIN32,QT_LARGEFILE_SUPPORT;QT_NO_DEBUG,NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_XML_LIB;QT_XMLPATTERNS_LIB"
 				RuntimeLibrary="2"
-				TreatWChar_tAsBuiltInType="false"
+				TreatWChar_tAsBuiltInType="true"
 				UsePrecompiledHeader="2"
 				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile="$(IntDir)\$(TargetName).pch"
@@ -91,6 +92,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
+			CharacterSet="0"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -109,11 +111,12 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				UseUnicodeResponseFiles="false"
 				Optimization="0"
 				AdditionalIncludeDirectories=".\GeneratedFiles;&quot;$(QTDIR)\include&quot;;&quot;.\GeneratedFiles\$(ConfigurationName)&quot;;&quot;$(QTDIR)\include\qtmain&quot;;&quot;$(QTDIR)\include\QtCore&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\QtXml&quot;;&quot;$(QTDIR)\include\QtXmlPatterns&quot;;.\"
 				PreprocessorDefinitions="UNICODE;WIN32;QT_LARGEFILE_SUPPORT;QT_CORE_LIB;QT_GUI_LIB;QT_XML_LIB;QT_XMLPATTERNS_LIB;DEBUG;_DEBUG"
 				RuntimeLibrary="3"
-				TreatWChar_tAsBuiltInType="false"
+				TreatWChar_tAsBuiltInType="true"
 				UsePrecompiledHeader="2"
 				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile="$(IntDir)\$(TargetName).pch"
@@ -221,7 +224,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Moc&apos;ing $(InputFileName)..."
-						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fStdAfx.h&quot; &quot;-f..\..\CEditor.h&quot; &quot;-I$(QTDIR)\include&quot; &quot;-I$(QTDIR)\include\QtCore&quot; &quot;-I$(QTDIR)\include\QtGui&quot; &quot;-I$(QTDIR)\include\qtmain&quot; &quot;-I$(QTDIR)\include\QtXml&quot; &quot;-I$(QTDIR)\include\QtXmlPatterns&quot; &quot;-I.&quot; &quot;-I.\GeneratedFiles&quot; &quot;-I.\GeneratedFiles\$(ConfigurationName)\.&quot; -D_DEBUG -DDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LARGEFILE_SUPPORT -DQT_XML_LIB -DQT_XMLPATTERNS_LIB -DUNICODE -DWIN32&#x0D;&#x0A;"
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;   -DUNICODE -DWIN32 -DQT_LARGEFILE_SUPPORT -DQT_CORE_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_XMLPATTERNS_LIB -DDEBUG -D_DEBUG -D_UNICODE  &quot;-I.\GeneratedFiles&quot; &quot;-I$(QTDIR)\include&quot; &quot;-I.\GeneratedFiles\$(ConfigurationName)\.&quot; &quot;-I$(QTDIR)\include\qtmain&quot; &quot;-I$(QTDIR)\include\QtCore&quot; &quot;-I$(QTDIR)\include\QtGui&quot; &quot;-I$(QTDIR)\include\QtXml&quot; &quot;-I$(QTDIR)\include\QtXmlPatterns&quot; &quot;-I.&quot; &quot;.\CEditor.h&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot; &quot;-fStdAfx.h&quot; &quot;-f..\..\CEditor.h&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
@@ -271,6 +274,10 @@
 			ParseFiles="false"
 			>
 			<File
+				RelativePath=".\Resources\Editor.ico"
+				>
+			</File>
+			<File
 				RelativePath=".\editor.qrc"
 				>
 				<FileConfiguration
@@ -295,6 +302,10 @@
 						Outputs=".\GeneratedFiles\qrc_$(InputName).cpp"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Editor.rc"
+				>
 			</File>
 		</Filter>
 		<Filter
@@ -364,10 +375,6 @@
 				</File>
 			</Filter>
 		</Filter>
-		<File
-			RelativePath=".\Editor.rc"
-			>
-		</File>
 	</Files>
 	<Globals>
 		<Global
