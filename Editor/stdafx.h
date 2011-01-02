@@ -7,17 +7,16 @@
 **----------------------------------------------------------------*/
 
 //
-// Engine includes
+// OS + Qt includes
 //
 
-#ifdef WIN32
-    #include <windows.h>
-#endif
-
+#include <windows.h>
 #include <QtGui>
+#include <assert.h>
 
 //
 // Project includes
 //
 
+#include "CCrashHandler.h"
 #include "CEditor.h"
