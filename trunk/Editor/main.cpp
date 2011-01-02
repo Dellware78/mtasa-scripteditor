@@ -4,14 +4,13 @@
 ** Filename:    main.cpp
 ** Developers:  x86 <x86dev@gmx.com>
 **
-** TODO: Write crashhandler (SetUnhandledExceptionFilter)
-**
 **----------------------------------------------------------------*/
 
 #include "stdafx.h"
 #include <QtGui/QApplication>
 #include <tlhelp32.h> //  related to: bool IsWindowsXPSP2OrLater ()
 
+CCrashHandler* g_pCrashHandler;
 bool TerminateIfRunning     ( void );
 BOOL IsWindowsXPSP2OrLater  ( void );
 
@@ -35,6 +34,11 @@ int main ( int argc, char *argv[] )
         MessageBoxA ( NULL, "Sorry, but to run the MTA Script Editor you need at least Windows XP SP2!\n\nIf you have Windows XP SP2 or higher, please submit a bugreport at: bugs.mtasa.com", "ERROR", MB_ICONEXCLAMATION | MB_OK );
         TerminateProcess ( GetCurrentProcess (), 1 );
     }
+
+    //
+    // Init crash handler.
+    //
+    g_pCrashHandler = new CCrashHandler;
 
     //
     // Done.
