@@ -17,8 +17,10 @@ class CEditor : public QMainWindow
     Q_OBJECT
 
 public:
-    CEditor          ( QWidget *parent = 0, Qt::WFlags flags = 0 );
-    ~CEditor         ( void );
+            CEditor             ( QWidget* parent = NULL, Qt::WFlags flags = NULL );
+            ~CEditor            ( void );
+
+    void    closeEvent          ( QCloseEvent* pQevent );
 
 private:
     Ui::EditorClass ui;

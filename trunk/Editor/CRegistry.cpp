@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------**
 **
 ** Project:     Multi Theft Auto - Script Editor.
-** Filename:    stdafx.cpp
+** Filename:    CRegistry.cpp
 ** Developers:  x86 <x86dev@gmx.com>
 **
 **----------------------------------------------------------------*/

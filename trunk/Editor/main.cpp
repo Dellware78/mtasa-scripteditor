@@ -6,50 +6,67 @@
 **
 **----------------------------------------------------------------*/
 
-#include "stdafx.h"
+#include <stdafx.h>
 #include <QtGui/QApplication>
 #include <tlhelp32.h> //  related to: bool IsWindowsXPSP2OrLater ()
 
-CCrashHandler* g_pCrashHandler;
+//
+CEditor* g_pWindow;
 bool TerminateIfRunning     ( void );
 BOOL IsWindowsXPSP2OrLater  ( void );
+void SetEditorVisible       ( bool bVisible );
+//
 
 int main ( int argc, char *argv[] )
 {
-    //
-    // Check if the Script Editor isn't running twice.
-    //
-    if ( TerminateIfRunning () )
+    // Some checks here..
     {
-        MessageBoxA ( NULL, "The MTA Script Editor is already running!", "ERROR", MB_ICONEXCLAMATION | MB_OK );
-        TerminateProcess ( GetCurrentProcess (), 1 );
+        //
+        // Check if the Script Editor isn't running twice.
+        //
+        if ( TerminateIfRunning () )
+        {
+            MessageBoxA ( NULL, "The MTA Script Editor is already running!", "ERROR", MB_ICONEXCLAMATION | MB_OK );
+            TerminateProcess ( GetCurrentProcess (), 1 );
+        }
+
+        //
+        // Check the OS version.
+        //
+        if ( IsWindowsXPSP2OrLater () == FALSE )
+        {
+            // Outdated Windows version.
+            MessageBoxA ( NULL, "Sorry, but to run the MTA Script Editor you need at least Windows XP SP2!\n\nIf you have Windows XP SP2 or higher, please submit a bugreport at: bugs.mtasa.com", "ERROR", MB_ICONEXCLAMATION | MB_OK );
+            TerminateProcess ( GetCurrentProcess (), 1 );
+        }
     }
 
-    //
-    // Check the OS version.
-    //
-    if ( IsWindowsXPSP2OrLater () == FALSE )
-    {
-        // Outdated Windows version.
-        MessageBoxA ( NULL, "Sorry, but to run the MTA Script Editor you need at least Windows XP SP2!\n\nIf you have Windows XP SP2 or higher, please submit a bugreport at: bugs.mtasa.com", "ERROR", MB_ICONEXCLAMATION | MB_OK );
-        TerminateProcess ( GetCurrentProcess (), 1 );
-    }
+    QApplication a ( argc, argv );
 
     //
     // Init crash handler.
     //
-    g_pCrashHandler = new CCrashHandler;
+    new CCrashHandler;
+
+    g_pWindow = new CEditor;
+    SetEditorVisible ( true );
 
     //
-    // Done.
-    // Start the Script Editor, jetz.
+    // Is this our first run ?
     //
-    QApplication a ( argc, argv );
-
-    CEditor w;
-    w.show ();
+    //if ( CRegistry::GetBool ( "firstRun" ) == true )
+    {
+        CFirstRun* pFirstWindow = new CFirstRun;
+        pFirstWindow->SetVisible ( true );
+    }
 
     return a.exec ();
+}
+
+
+void SetEditorVisible ( bool bVisible )
+{
+    ( ( bVisible == true ) ? g_pWindow->show () : g_pWindow->hide () );
 }
 
 
@@ -60,9 +77,8 @@ bool TerminateIfRunning ( void )
 
     DWORD dwOwnPID   = GetProcessId ( GetCurrentProcess () );
     HANDLE hSnapShot = CreateToolhelp32Snapshot ( TH32CS_SNAPPROCESS, 0 );
-    PROCESSENTRY32* processInfo = new PROCESSENTRY32;
 
-    // TODO: memset to zero ?
+    PROCESSENTRY32* processInfo = new PROCESSENTRY32;
     processInfo->dwSize = sizeof ( PROCESSENTRY32 );
 
     while ( Process32Next ( hSnapShot, processInfo ) != 0 )
