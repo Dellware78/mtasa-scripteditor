@@ -1,0 +1,7 @@
+- Close VS2008
+
+* Qt Libs:
+- http://qt.nokia.com/downloads/windows-cpp-vs2008
+
+* Visual Studio 2008 plugin:
+- http://qt.nokia.com/downloads/visual-studio-add-in

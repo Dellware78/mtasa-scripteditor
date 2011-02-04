@@ -11,12 +11,20 @@
 //
 
 #include <windows.h>
-#include <QtGui>
 #include <assert.h>
+#include <QtGui>
+
+//
+// Global defines
+//
+#define SAFE_DELETE(p) { if (p) { delete (p); (p) = NULL; } }
 
 //
 // Project includes
 //
 
-#include "CCrashHandler.h"
-#include "CEditor.h"
+#include <CEditor.h>
+#include <CCrashHandler.h>
+#include <CRegistry.h>
+#include <CSystemTray.h>
+#include <CFirstRun.h>

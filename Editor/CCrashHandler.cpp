@@ -6,7 +6,7 @@
 **
 **----------------------------------------------------------------*/
 
-#include "stdafx.h"
+#include <stdafx.h>
 
 CCrashHandler::CCrashHandler ( void )
 {

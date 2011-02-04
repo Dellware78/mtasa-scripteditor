@@ -179,6 +179,18 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CFirstRun.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CRegistry.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CSystemTray.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
@@ -237,6 +249,18 @@
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\CFirstRun.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CRegistry.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CSystemTray.h"
+				>
 			</File>
 			<File
 				RelativePath=".\stdafx.h"
